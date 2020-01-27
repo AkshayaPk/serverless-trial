@@ -10,7 +10,7 @@ provider:
 
 functions:
   getMsg:
-    handler: service-1/handler.api
+    handler: service-1/handler.hello
     events:
       - http:
           path: student # Path for this endpoint
@@ -25,7 +25,7 @@ functions:
         - package-lock.json
       individually: true    
   putMsg:
-    handler: service-2/handler.api
+    handler: service-2/handler.hello
     events:
       - http: 
           path: teacher # Path for this endpoint
