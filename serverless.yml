@@ -4,9 +4,16 @@ provider:
   name: aws
   runtime: nodejs10.x
   stage: dev
+  versionFunctions: true
+  package: # Optional deployment packaging configuration
+    individually: true
 
 functions:
   getMsg:
-    handler: handler.api
+    handler: service-1.handler.api
     events:
       - http: GET /
+  putMsg:
+    handler: service-2.handler.api
+    events:
+      - http: GET /    
