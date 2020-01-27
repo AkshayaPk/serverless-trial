@@ -12,12 +12,20 @@ functions:
   getMsg:
     handler: service-1.handler.api
     events:
-      - http: GET /
+      - http:
+          path: student # Path for this endpoint
+          method: get # HTTP method for this endpoint
     package: # Optional deployment packaging configuration
+      include: # Specify the directories and files which should be included in the deployment package for this specific function.
+        - service-1/**
       individually: true    
   putMsg:
     handler: service-2.handler.api
     events:
-      - http: GET /  
+      - http: 
+          path: teacher # Path for this endpoint
+          method: get # HTTP method for this endpoint
     package: # Optional deployment packaging configuration
+      include: # Specify the directories and files which should be included in the deployment package for this specific function.
+        - service-2/**
       individually: true       
