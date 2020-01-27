@@ -10,30 +10,32 @@ provider:
 
 functions:
   getMsg:
-    handler: handler.api
+    handler: service-1.handler.api
     events:
       - http:
           path: student # Path for this endpoint
           method: get # HTTP method for this endpoint
     package: # Optional deployment packaging configuration
       include: # Specify the directories and files which should be included in the deployment package for this specific function.
-        - service-1/handler.js
+        - service-1/**
       exclude: 
         - service-2/** 
         - buildspec.yaml
         - serverless.yaml 
+        - package-lock.json
       individually: true    
   putMsg:
-    handler: handler.api
+    handler: service-2.handler.api
     events:
       - http: 
           path: teacher # Path for this endpoint
           method: get # HTTP method for this endpoint
     package: # Optional deployment packaging configuration
       include: # Specify the directories and files which should be included in the deployment package for this specific function.
-        - service-2/handler.js
+        - service-2/**
       exclude: 
         - service-1/** 
         - buildspec.yaml
-        - serverless.yaml   
+        - serverless.yaml
+        - package-lock.json   
       individually: true       
