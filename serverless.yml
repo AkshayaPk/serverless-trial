@@ -10,7 +10,7 @@ provider:
 
 functions:
   getMsg:
-    handler: service-1.handler.hello
+    handler: service-1.handler.api
     events:
       - http:
           path: student # Path for this endpoint
@@ -18,9 +18,12 @@ functions:
     package: # Optional deployment packaging configuration
       include: # Specify the directories and files which should be included in the deployment package for this specific function.
         - service-1/**
+        - service-1/handler.js
+      exclude: 
+        - service-2/**  
       individually: true    
   putMsg:
-    handler: service-2.handler.hello
+    handler: service-2.handler.api
     events:
       - http: 
           path: teacher # Path for this endpoint
@@ -28,4 +31,7 @@ functions:
     package: # Optional deployment packaging configuration
       include: # Specify the directories and files which should be included in the deployment package for this specific function.
         - service-2/**
+        - service-2/handler.js
+      exclude: 
+        - service-1/**   
       individually: true       
