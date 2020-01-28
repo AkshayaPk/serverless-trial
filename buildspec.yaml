@@ -9,6 +9,9 @@ phases:
       - npm install
   build:
     commands:
+      - cd service-1
+      - sls deploy -s dev
+      - cd ../service-2
       - sls deploy -s dev
 artifacts:
   files:
